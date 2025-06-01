@@ -8,15 +8,22 @@ use Illuminate\Http\Request;
 class SubjectController extends Controller
 {
     
-    public function createSubjectPage(){
-        return view('createSubject', ['title' => 'Create Subject']);
+    public function createPage(){
+        $title = 'Create Subject';
+        return view('createSubject', compact('title'));
     }
 
-    public function createSubject(Request $request){
+    public function store(Request $request){
         Subject::create([
             'name' => $request->name,
         ]);
         return redirect('/');
+    }
+
+    public function view(){
+        $title = 'View Subjects';
+        $subjects = Subject::all();
+        return view('viewSubjects', compact('title', 'subjects'));
     }
 
 }

@@ -2,18 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Subject;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Material extends Model
 {
     use HasFactory;
 
-        protected $fillable = [
+    protected $fillable = [
         'title',
         'content',
-        'subject_id',
-        
+        'media',
+        'subject_id',   
     ];
+
+    public function subject(){
+        return $this->belongsTo(Subject::class);
+    }
 
 }
