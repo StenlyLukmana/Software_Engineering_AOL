@@ -92,16 +92,33 @@ sudo apt-get install -y nodejs
    cd Software_Engineering_AOL
    ```
 
-2. **Create environment file:**
+2. **Create and configure environment file:**
    ```bash
-   # Copy the example environment file
+   # Option 1: Use the SQLite-ready template (recommended)
+   cp .env.sqlite .env
+   
+   # Option 2: Use the standard template and modify it
    cp .env.example .env
    
-   # Or on Windows:
+   # On Windows:
+   copy .env.sqlite .env
+   # or
    copy .env.example .env
    ```
 
-3. **Generate application key:**
+3. **Configure database settings (if using .env.example):**
+   If you copied from `.env.example`, edit the `.env` file and change the database configuration from MySQL to SQLite:
+   ```env
+   DB_CONNECTION=sqlite
+   DB_DATABASE=database/database.sqlite
+   # Comment out or remove these MySQL settings:
+   # DB_HOST=127.0.0.1
+   # DB_PORT=3306
+   # DB_USERNAME=root
+   # DB_PASSWORD=
+   ```
+
+4. **Generate application key:**
    ```bash
    php artisan key:generate
    ```
@@ -112,12 +129,12 @@ sudo apt-get install -y nodejs
    npm run build
    ```
 
-5. **Start the development server:**
+6. **Start the development server:**
    ```bash
    php artisan serve
    ```
 
-6. **Open your browser and visit:** `http://localhost:8000`
+7. **Open your browser and visit:** `http://localhost:8000`
 
 ## ✅ That's it! The application is ready to use!
 
@@ -142,6 +159,30 @@ The database comes with pre-seeded test accounts. Check the database seeders or 
 - Frontend assets will need to be built with `npm run build` or `npm run dev`
 
 ## Troubleshooting
+
+### Database Connection Error (MySQL instead of SQLite):
+If you get an error like "No connection could be made because the target machine actively refused it":
+
+1. **Check your `.env` file** - Make sure it's configured for SQLite:
+   ```env
+   DB_CONNECTION=sqlite
+   DB_DATABASE=database/database.sqlite
+   ```
+
+2. **NOT MySQL** (comment these out):
+   ```env
+   # DB_CONNECTION=mysql
+   # DB_HOST=127.0.0.1
+   # DB_PORT=3306
+   # DB_USERNAME=root
+   # DB_PASSWORD=
+   ```
+
+3. **Clear Laravel cache** after changing `.env`:
+   ```bash
+   php artisan config:clear
+   php artisan cache:clear
+   ```
 
 ### If you encounter permission issues:
 ```bash
