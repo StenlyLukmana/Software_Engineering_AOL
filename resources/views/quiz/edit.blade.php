@@ -150,10 +150,9 @@
                                         <span class="badge bg-primary">{{ $question->points }} points</span>
                                     </div>
                                     <p class="mb-2">{{ $question->question }}</p>
-                                    
-                                    @if($question->type === 'multiple_choice' && $question->options)
+                                      @if($question->type === 'multiple_choice' && $question->options)
                                         <div class="row">
-                                            @foreach($question->options as $optIndex => $option)
+                                            @foreach($question->getOptionsArray() as $optIndex => $option)
                                                 <div class="col-md-6 mb-1">
                                                     <span class="badge {{ $question->correct_answer === chr(65 + $optIndex) ? 'bg-success' : 'bg-light text-dark' }} me-1">
                                                         {{ chr(65 + $optIndex) }}

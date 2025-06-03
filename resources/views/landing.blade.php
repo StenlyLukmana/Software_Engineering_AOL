@@ -303,8 +303,7 @@
             </div>
             
             <!-- Subject Cards -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Database Systems -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">                <!-- Database Systems -->
                 <div class="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 animate-fadeInUp delay-200">
                     <div class="text-primary-blue text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-database"></i>
@@ -314,13 +313,12 @@
                         Master SQL, database design, normalization, and modern database technologies. 
                         Learn to build efficient and scalable data storage solutions.
                     </p>
-                    <div class="mt-6 flex items-center text-primary-blue font-semibold group-hover:text-primary-navy transition-colors duration-300">
+                    <a href="{{ route('course.detail', 'database-systems') }}" class="mt-6 inline-flex items-center px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-primary-navy transition-colors duration-300 no-underline">
                         <span>Explore Course</span>
                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </div>
+                    </a>
                 </div>
-                
-                <!-- Algorithm & Programming -->
+                  <!-- Algorithm & Programming -->
                 <div class="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 animate-fadeInUp delay-400">
                     <div class="text-primary-blue text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-code"></i>
@@ -330,13 +328,12 @@
                         Learn fundamental programming concepts, algorithm design, and problem-solving techniques. 
                         Build strong coding foundations across multiple languages.
                     </p>
-                    <div class="mt-6 flex items-center text-primary-blue font-semibold group-hover:text-primary-navy transition-colors duration-300">
+                    <a href="{{ route('course.detail', 'algorithm-programming') }}" class="mt-6 inline-flex items-center px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-primary-navy transition-colors duration-300 no-underline">
                         <span>Explore Course</span>
                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </div>
+                    </a>
                 </div>
-                
-                <!-- Data Structures -->
+                  <!-- Data Structures -->
                 <div class="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 animate-fadeInUp delay-600">
                     <div class="text-primary-blue text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-project-diagram"></i>
@@ -346,13 +343,12 @@
                         Understand arrays, linked lists, trees, graphs, and hash tables. 
                         Learn when and how to use the right data structure for optimal performance.
                     </p>
-                    <div class="mt-6 flex items-center text-primary-blue font-semibold group-hover:text-primary-navy transition-colors duration-300">
+                    <a href="{{ route('course.detail', 'data-structures') }}" class="mt-6 inline-flex items-center px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-primary-navy transition-colors duration-300 no-underline">
                         <span>Explore Course</span>
                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </div>
+                    </a>
                 </div>
-                
-                <!-- Computer Networks -->
+                  <!-- Computer Networks -->
                 <div class="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 animate-fadeInUp delay-200">
                     <div class="text-primary-blue text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-network-wired"></i>
@@ -362,13 +358,12 @@
                         Explore network protocols, architecture, security, and distributed systems. 
                         Understand how modern internet infrastructure works.
                     </p>
-                    <div class="mt-6 flex items-center text-primary-blue font-semibold group-hover:text-primary-navy transition-colors duration-300">
+                    <a href="{{ route('course.detail', 'computer-networks') }}" class="mt-6 inline-flex items-center px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-primary-navy transition-colors duration-300 no-underline">
                         <span>Explore Course</span>
                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </div>
+                    </a>
                 </div>
-                
-                <!-- Software Engineering -->
+                  <!-- Software Engineering -->
                 <div class="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 animate-fadeInUp delay-400">
                     <div class="text-primary-blue text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-cogs"></i>
@@ -378,13 +373,12 @@
                         Learn software development lifecycle, design patterns, testing methodologies, 
                         and project management for building robust applications.
                     </p>
-                    <div class="mt-6 flex items-center text-primary-blue font-semibold group-hover:text-primary-navy transition-colors duration-300">
+                    <a href="{{ route('course.detail', 'software-engineering') }}" class="mt-6 inline-flex items-center px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-primary-navy transition-colors duration-300 no-underline">
                         <span>Explore Course</span>
                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </div>
+                    </a>
                 </div>
-                
-                <!-- Operating Systems -->
+                  <!-- Operating Systems -->
                 <div class="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 animate-fadeInUp delay-600">
                     <div class="text-primary-blue text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-desktop"></i>
@@ -394,10 +388,10 @@
                         Understand process management, memory allocation, file systems, and system calls. 
                         Learn how operating systems manage computer resources.
                     </p>
-                    <div class="mt-6 flex items-center text-primary-blue font-semibold group-hover:text-primary-navy transition-colors duration-300">
+                    <a href="{{ route('course.detail', 'operating-systems') }}" class="mt-6 inline-flex items-center px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-primary-navy transition-colors duration-300 no-underline">
                         <span>Explore Course</span>
                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

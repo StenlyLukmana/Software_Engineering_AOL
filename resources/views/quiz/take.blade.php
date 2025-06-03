@@ -53,10 +53,9 @@
                         <div class="card-body">
                             <h6 class="mb-3">{{ $question->question }}</h6>
                             
-                            @if($question->type === 'multiple_choice')
-                                @if($question->options)
+                            @if($question->type === 'multiple_choice')                                @if($question->options)
                                     <div class="row">
-                                        @foreach($question->options as $optIndex => $option)
+                                        @foreach($question->getOptionsArray() as $optIndex => $option)
                                             <div class="col-md-6 mb-2">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" 

@@ -26,8 +26,36 @@ class QuizQuestion extends Model
     public function quiz()
     {
         return $this->belongsTo(Quiz::class);
+    }    /**
+     * Get safe options array regardless of how the data is stored
+     * 
+     * @return array
+     */
+    public function getOptionsArray()
+    {
+        if (empty($this->options)) {
+            return [];
+        }
+        
+        if (is_array($this->options)) {
+            return $this->options;
+        }
+        
+        if (is_string($this->options)) {
+            // Try to decode JSON
+            $decoded = json_decode($this->options, true);
+            if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                return $decoded;
+            }
+            
+            // If not valid JSON, split by newlines
+            $options = preg_split('/\r?\n/', $this->options);
+            return array_values(array_filter(array_map('trim', $options), fn($v) => $v !== ''));
+        }
+        
+        return [];
     }
-
+    
     public function checkAnswer($userAnswer)
     {
         if ($this->type === 'multiple_choice') {

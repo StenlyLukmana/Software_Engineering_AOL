@@ -22,6 +22,9 @@ Route::get('/', function () {
     return view('landing');
 })->name('landing');
 
+// Course detail routes
+Route::get('/course/{course}', [App\Http\Controllers\CourseController::class, 'showCourse'])->name('course.detail');
+
 // Temporary debug route
 Route::get('/debug/quiz-create', function () {
     $materials = App\Models\Material::with('subject')->get();

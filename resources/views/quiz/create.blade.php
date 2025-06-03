@@ -146,10 +146,8 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="quiz-form-container">
-        <form action="{{ route('quiz.store') }}" method="POST" id="quiz-form">
+    </div>    <div class="quiz-form-container">
+        <form action="{{ url('/quiz-store-direct') }}" method="POST" id="quiz-form">
             @csrf
             
             <!-- Quiz Details -->
@@ -230,9 +228,8 @@
             <div class="row mt-4">
                 <div class="col-12">
                     <div class="card card-custom">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <a href="{{ route('quiz.index') }}" class="btn btn-outline-secondary">
+                        <div class="card-body">                            <div class="d-flex justify-content-between">
+                                <a href="{{ url('/quizzes') }}" class="btn btn-outline-secondary">
                                     <i class="fas fa-arrow-left me-1"></i>Cancel
                                 </a>
                                 <button type="submit" class="btn btn-success">

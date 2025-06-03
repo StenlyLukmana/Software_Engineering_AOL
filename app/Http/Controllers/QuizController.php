@@ -118,7 +118,10 @@ class QuizController extends Controller
             ]);
 
             if ($questionData['type'] === 'multiple_choice' && isset($questionData['options'])) {
-                $question->options = $questionData['options'];
+                // Convert options string to array (split by newlines, trim, remove empty)
+                $options = preg_split('/\r?\n/', $questionData['options']);
+                $options = array_filter(array_map('trim', $options), fn($v) => $v !== '');
+                $question->options = array_values($options);
             }
 
             $quiz->questions()->save($question);

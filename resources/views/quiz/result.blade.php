@@ -131,10 +131,9 @@
                             
                             <p class="mb-3">{{ $question->question }}</p>
                             
-                            @if($question->type === 'multiple_choice')
-                                @if($question->options)
+                            @if($question->type === 'multiple_choice')                                @if($question->options)
                                     <div class="row mb-3">
-                                        @foreach($question->options as $optIndex => $option)
+                                        @foreach($question->getOptionsArray() as $optIndex => $option)
                                             @php
                                                 $optionLetter = chr(65 + $optIndex);
                                                 $isUserAnswer = $userAnswer === $optionLetter;

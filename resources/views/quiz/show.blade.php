@@ -100,11 +100,9 @@
                         @foreach($quiz->questions as $index => $question)
                             <div class="border rounded p-3 mb-3">
                                 <h6 class="fw-bold">Question {{ $index + 1 }} ({{ $question->points }} points)</h6>
-                                <p class="mb-2">{{ $question->question }}</p>
-                                
-                                @if($question->type === 'multiple_choice' && $question->options)
+                                <p class="mb-2">{{ $question->question }}</p>                                @if($question->type === 'multiple_choice' && $question->options)
                                     <div class="row">
-                                        @foreach($question->options as $optIndex => $option)
+                                        @foreach($question->getOptionsArray() as $optIndex => $option)
                                             <div class="col-md-6 mb-1">
                                                 <span class="badge bg-light text-dark me-1">{{ chr(65 + $optIndex) }}</span>
                                                 {{ $option }}
