@@ -17,8 +17,8 @@ use App\Http\Controllers\MaterialController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('landing');
+})->name('landing');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,11 +32,31 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/create-subject', [SubjectController::class, 'createPage']);
-Route::POST('/create-subject', [SubjectController::class, 'store']);
-Route::get('/view-subjects', [SubjectController::class, 'view']);
+// Public routes - accessible by all authenticated users
+Route::middleware(['auth'])->group(function () {
+    Route::get('/view-subjects', [SubjectController::class, 'view'])->name('subjects.index');
+    Route::get('/view/{subjectID}', [MaterialController::class, 'viewSubjectMaterials'])->name('subjects.materials');
+    Route::get('/view/{subjectID}/{materialID}', [MaterialController::class, 'view'])->name('materials.show');
+});
 
-Route::get('/view/{subjectID}', [MaterialController::class, 'viewSubjectMaterials']);
-Route::get('/create-material/{subjectID}', [MaterialController::class, 'createPage']);
-Route::post('/create-material', [MaterialController::class, 'store']);
-Route::get('/view/{subjectID}/{materialID}', [MaterialController::class, 'view']);
+// Admin and Lecturer routes - content management
+Route::middleware(['auth', 'role:admin,lecturer'])->group(function () {
+    Route::get('/create-subject', [SubjectController::class, 'createPage'])->name('subjects.create');
+    Route::post('/create-subject', [SubjectController::class, 'store'])->name('subjects.store');
+    Route::get('/subjects/{subject}/edit', [SubjectController::class, 'edit'])->name('subjects.edit');
+    Route::put('/subjects/{subject}', [SubjectController::class, 'update'])->name('subjects.update');
+    Route::delete('/subjects/{subject}', [SubjectController::class, 'destroy'])->name('subjects.destroy');
+    Route::get('/create-material/{subjectID}', [MaterialController::class, 'createPage'])->name('materials.create');
+    Route::post('/create-material', [MaterialController::class, 'store'])->name('materials.store');
+});
+
+// Admin only routes
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/users', [App\Http\Controllers\AdminController::class, 'users'])->name('admin.users');
+    Route::get('/users/create', [App\Http\Controllers\AdminController::class, 'createUser'])->name('admin.users.create');
+    Route::post('/users', [App\Http\Controllers\AdminController::class, 'storeUser'])->name('admin.users.store');
+    Route::get('/users/{user}/edit', [App\Http\Controllers\AdminController::class, 'editUser'])->name('admin.users.edit');
+    Route::put('/users/{user}', [App\Http\Controllers\AdminController::class, 'updateUser'])->name('admin.users.update');
+    Route::delete('/users/{user}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('admin.users.delete');
+});
