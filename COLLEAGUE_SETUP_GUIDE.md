@@ -160,6 +160,29 @@ The database comes with pre-seeded test accounts. Check the database seeders or 
 
 ## Troubleshooting
 
+### Database Configuration Error (Windows Path Issue):
+If you get an error like "Failed to parse dotenv file. Encountered an unexpected escape sequence":
+
+1. **Use relative path** (recommended):
+   ```env
+   DB_CONNECTION=sqlite
+   DB_DATABASE=database/database.sqlite
+   ```
+
+2. **Or if using absolute path, use forward slashes**:
+   ```env
+   # ❌ Wrong (backslashes cause parsing errors):
+   # DB_DATABASE="C:\Users\Name\path\to\database.sqlite"
+   
+   # ✅ Correct (forward slashes work on Windows):
+   DB_DATABASE="C:/Users/Name/path/to/database.sqlite"
+   ```
+
+3. **Clear cache after fixing**:
+   ```bash
+   php artisan config:clear
+   ```
+
 ### Database Connection Error (MySQL instead of SQLite):
 If you get an error like "No connection could be made because the target machine actively refused it":
 
