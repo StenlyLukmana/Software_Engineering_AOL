@@ -4,7 +4,7 @@
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
+# /vendor  # Temporarily disabled for colleague setup
 .env
 .env.backup
 .env.production
