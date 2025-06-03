@@ -77,16 +77,17 @@
             font-weight: 700;
             transition: 0.5s;
             font-size: 1.4rem;
-        }
-
-        header div a:hover {
+        }        header div a:hover {
             opacity: 0.7;
             color: var(--primary-blue);
-        }
-
-        .logo-img {
-            width: 150px;
-        }        .home-container {
+        }        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }.home-container {
             width: 100%;
             min-height: 100vh;
             background: linear-gradient(to bottom right, var(--light-cream), var(--accent-yellow));

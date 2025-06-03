@@ -162,11 +162,22 @@
                                 <i class="fas fa-book me-1"></i>Subjects
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('quiz.index') }}">
+                                <i class="fas fa-clipboard-check me-1"></i>Quizzes
+                            </a>
+                        </li>
                         @if(auth()->user()->canManageContent())
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('subjects.create') }}">
-                                    <i class="fas fa-plus-circle me-1"></i>New Subject
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-plus-circle me-1"></i>Create
                                 </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('subjects.create') }}">
+                                        <i class="fas fa-book me-2"></i>New Subject</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('quiz.create') }}">
+                                        <i class="fas fa-clipboard-check me-2"></i>New Quiz</a></li>
+                                </ul>
                             </li>
                         @endif
                         @if(auth()->user()->isAdmin())

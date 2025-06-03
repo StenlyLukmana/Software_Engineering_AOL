@@ -67,4 +67,70 @@ class MaterialController extends Controller
         return view('viewMaterial', compact('title', 'material'));
     }
 
+    public function edit($subjectID, $materialID){
+        $title = 'Edit Learning Material';
+        $material = Material::with('subject')
+            ->where('subject_id', $subjectID)
+            ->where('id', $materialID)
+            ->firstOrFail();
+        $subject = $material->subject;
+        return view('editMaterial', compact('title', 'material', 'subject'));
+    }
+
+    public function update(Request $request, $subjectID, $materialID){
+        $material = Material::where('subject_id', $subjectID)
+            ->where('id', $materialID)
+            ->firstOrFail();
+            
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'media' => 'nullable|file|mimes:jpg,jpeg,png,gif,mp4,webm,ogg,pdf,doc,docx,ppt,pptx|max:20480', // 20MB max
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $fileName = $material->media; // Keep existing media by default
+
+        if ($request->hasFile('media')) {
+            // Delete old media file if it exists
+            if ($material->media && file_exists(storage_path('app/public/media/' . $material->media))) {
+                unlink(storage_path('app/public/media/' . $material->media));
+            }
+            
+            $extension = $request->file('media')->getClientOriginalExtension();
+            $fileName = Str::slug($request->title) . '_' . time() . '.' . $extension;
+            $request->file('media')->storeAs('public/media/', $fileName);
+        }
+
+        $material->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'media' => $fileName,
+        ]);
+
+        return redirect()->route('subjects.materials', $subjectID)
+            ->with('success', 'Learning material updated successfully!');
+    }
+
+    public function destroy($subjectID, $materialID){
+        $material = Material::where('subject_id', $subjectID)
+            ->where('id', $materialID)
+            ->firstOrFail();
+
+        // Delete media file if it exists
+        if ($material->media && file_exists(storage_path('app/public/media/' . $material->media))) {
+            unlink(storage_path('app/public/media/' . $material->media));
+        }
+
+        $material->delete();
+
+        return redirect()->route('subjects.materials', $subjectID)
+            ->with('success', 'Learning material deleted successfully!');
+    }
+
 }

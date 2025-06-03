@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuizAttemptController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +39,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/view-subjects', [SubjectController::class, 'view'])->name('subjects.index');
     Route::get('/view/{subjectID}', [MaterialController::class, 'viewSubjectMaterials'])->name('subjects.materials');
     Route::get('/view/{subjectID}/{materialID}', [MaterialController::class, 'view'])->name('materials.show');
+    
+    // Quiz routes for students
+    Route::get('/quizzes', [QuizController::class, 'index'])->name('quiz.index');
+    Route::get('/quiz', function () {
+        return redirect()->route('quiz.index');
+    }); // Redirect /quiz to /quizzes
+    Route::get('/quiz/{quiz}', [QuizController::class, 'show'])->name('quiz.show');
+    Route::post('/quiz/{quiz}/start', [QuizAttemptController::class, 'start'])->name('quiz.start');
+    Route::get('/quiz/{quiz}/attempt/{attempt}', [QuizAttemptController::class, 'take'])->name('quiz.take');
+    Route::post('/quiz/{quiz}/attempt/{attempt}/submit', [QuizAttemptController::class, 'submit'])->name('quiz.submit');
+    Route::get('/quiz/{quiz}/attempt/{attempt}/result', [QuizAttemptController::class, 'result'])->name('quiz.result');
 });
 
 // Admin and Lecturer routes - content management
@@ -48,6 +61,18 @@ Route::middleware(['auth', 'role:admin,lecturer'])->group(function () {
     Route::delete('/subjects/{subject}', [SubjectController::class, 'destroy'])->name('subjects.destroy');
     Route::get('/create-material/{subjectID}', [MaterialController::class, 'createPage'])->name('materials.create');
     Route::post('/create-material', [MaterialController::class, 'store'])->name('materials.store');
+    
+    // Material management routes - NEW WORKING ROUTES
+    Route::get('/edit-material/{subjectID}/{materialID}', [MaterialController::class, 'edit'])->name('materials.edit');
+    Route::put('/update-material/{subjectID}/{materialID}', [MaterialController::class, 'update'])->name('materials.update');
+    Route::delete('/delete-material/{subjectID}/{materialID}', [MaterialController::class, 'destroy'])->name('materials.destroy');
+    
+    // Quiz management routes
+    Route::get('/quiz/create', [QuizController::class, 'create'])->name('quiz.create');
+    Route::post('/quizzes', [QuizController::class, 'store'])->name('quiz.store'); // Changed to avoid conflict
+    Route::get('/quiz/{quiz}/edit', [QuizController::class, 'edit'])->name('quiz.edit');
+    Route::put('/quiz/{quiz}', [QuizController::class, 'update'])->name('quiz.update');
+    Route::delete('/quiz/{quiz}', [QuizController::class, 'destroy'])->name('quiz.destroy');
 });
 
 // Admin only routes

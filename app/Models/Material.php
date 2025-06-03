@@ -21,4 +21,19 @@ class Material extends Model
         return $this->belongsTo(Subject::class);
     }
 
+    public function quizzes()
+    {
+        return $this->hasMany(Quiz::class);
+    }
+
+    public function progress()
+    {
+        return $this->hasMany(MaterialProgress::class);
+    }
+
+    public function getUserProgress($userId)
+    {
+        return $this->progress()->where('user_id', $userId)->first();
+    }
+
 }

@@ -21,15 +21,15 @@ try {
     // Test admin user
     $admin = App\Models\User::where('email', 'admin@cslearning.com')->first();
     if ($admin) {
-        echo "✅ Admin user found: {$admin->name}\n";
-        echo "🔑 Admin email: {$admin->email}\n\n";
+        echo "Admin user found: {$admin->name}\n";
+        echo "Admin email: {$admin->email}\n\n";
     } else {
-        echo "❌ Admin user not found\n\n";
+        echo "Admin user not found\n\n";
     }
 
-    echo "🎉 Database is ready for login testing!\n";
+    echo "Database is ready for login testing!\n";
     
 } catch (Exception $e) {
-    echo "❌ Database Connection: FAILED\n";
+    echo "Database Connection: FAILED\n";
     echo "Error: " . $e->getMessage() . "\n";
 }
