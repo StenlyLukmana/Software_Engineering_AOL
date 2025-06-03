@@ -175,7 +175,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('subjects.create') }}">
                                         <i class="fas fa-book me-2"></i>New Subject</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('quiz.create') }}">
+                                    <li><a class="dropdown-item" href="{{ url('/quiz-create-direct') }}">
                                         <i class="fas fa-clipboard-check me-2"></i>New Quiz</a></li>
                                 </ul>
                             </li>
@@ -247,7 +247,21 @@
             </div>
         @endif
         
+        @php
+        try {
+        @endphp
         @yield('container')
+        @php
+        } catch (\Throwable $e) {
+            echo '<div class="alert alert-danger mt-4">
+                <h4 class="alert-heading">Error Rendering View</h4>
+                <p>An error occurred while rendering the view: '.$e->getMessage().'</p>';
+            if(config('app.debug')) {
+                echo '<hr><pre>'.$e->getTraceAsString().'</pre>';
+            }
+            echo '</div>';
+        }
+        @endphp
     </div>
 
     <script>

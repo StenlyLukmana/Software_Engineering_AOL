@@ -110,9 +110,26 @@
                                         <small class="text-muted">{{ $material->created_at->format('M d, Y') }}</small>
                                     </td>
                                     <td class="align-middle">
-                                        <a href="{{ route('materials.show', [$material->subject_id, $material->id]) }}" class="btn btn-success-custom btn-sm">
-                                            <i class="fas fa-eye me-1"></i>View
-                                        </a>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ route('materials.show', [$material->subject_id, $material->id]) }}" 
+                                               class="btn btn-success-custom btn-sm" 
+                                               title="View Material">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            @if(auth()->user()->canManageContent())
+                                                <a href="{{ route('materials.edit', [$material->subject_id, $material->id]) }}" 
+                                                   class="btn btn-outline-primary btn-sm" 
+                                                   title="Edit Material">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <button type="button" 
+                                                        class="btn btn-outline-danger btn-sm" 
+                                                        title="Delete Material"
+                                                        onclick="confirmDeleteMaterial({{ $material->id }}, '{{ $material->title }}', {{ $material->subject_id }})">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            @endif
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -137,5 +154,45 @@
         </div>
     </div>
 </div>
+
+<!-- Delete Material Confirmation Modal -->
+<div class="modal fade" id="deleteMaterialModal" tabindex="-1" aria-labelledby="deleteMaterialModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteMaterialModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    <i class="fas fa-exclamation-triangle fa-3x text-warning"></i>
+                </div>
+                <p>Are you sure you want to delete the learning material <strong id="deleteMaterialName"></strong>?</p>
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    This action cannot be undone. The material and any associated media files will be permanently deleted.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteMaterialForm" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash me-1"></i>Delete Material
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function confirmDeleteMaterial(materialId, materialTitle, subjectId) {
+    document.getElementById('deleteMaterialName').textContent = materialTitle;
+    document.getElementById('deleteMaterialForm').action = `/delete-material/${subjectId}/${materialId}`;
+    new bootstrap.Modal(document.getElementById('deleteMaterialModal')).show();
+}
+</script>
 
 @endsection

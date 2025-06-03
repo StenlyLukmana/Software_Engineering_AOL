@@ -16,10 +16,9 @@
                             <p class="mb-0 opacity-75">
                                 Test your knowledge and track your progress
                             </p>
-                        </div>
-                        <div class="col-md-4 text-end">
+                        </div>                        <div class="col-md-4 text-end">
                             @if(auth()->user()->canManageContent())
-                                <a href="{{ route('quiz.create') }}" class="btn btn-light btn-sm">
+                                <a href="{{ url('/quiz-create-direct') }}" class="btn btn-light btn-sm">
                                     <i class="fas fa-plus me-1"></i>Create Quiz
                                 </a>
                             @endif
@@ -134,9 +133,8 @@
                     <div class="card-body text-center py-5">
                         <i class="fas fa-clipboard-check fa-3x text-muted mb-3"></i>
                         <h4 class="text-muted">No Quizzes Available</h4>
-                        <p class="text-muted">There are no quizzes available at this time.</p>
-                        @if(auth()->user()->canManageContent())
-                            <a href="{{ route('quiz.create') }}" class="btn btn-primary">
+                        <p class="text-muted">There are no quizzes available at this time.</p>                        @if(auth()->user()->canManageContent())
+                            <a href="{{ url('/quiz-create-direct') }}" class="btn btn-primary">
                                 <i class="fas fa-plus me-1"></i>Create First Quiz
                             </a>
                         @endif

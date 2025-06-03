@@ -33,17 +33,58 @@ class QuizController extends Controller
         $attempts = $quiz->userAttempts($user->id)->orderBy('created_at', 'desc')->get();
         $bestScore = $quiz->getUserBestScore($user->id);
         $totalPoints = $quiz->getTotalPoints();
+      $canTakeQuiz = $attempts->count() < $quiz->max_attempts;
         
-        $canTakeQuiz = $attempts->count() < $quiz->max_attempts;
-        
-        return view('quiz.show', compact('quiz', 'attempts', 'bestScore', 'totalPoints', 'canTakeQuiz'));
-    }
-
-    public function create()
+        return view('quiz.show', compact('quiz', 'attempts', 'bestScore', 'totalPoints', 'canTakeQuiz'));    }    public function create()
     {
-        $this->authorize('create', Quiz::class);
-        $materials = Material::with('subject')->get();
-        return view('quiz.create', compact('materials'));
+        try {
+            $this->authorize('create', Quiz::class);
+        
+            // Log access attempt
+            \Log::info('Quiz create page accessed', [
+                'user_id' => auth()->id(),
+                'user_logged_in' => auth()->check(),
+                'user_role' => auth()->check() ? auth()->user()->role : 'none',
+                'ip' => request()->ip()
+            ]);
+            
+            $materials = Material::with('subject')->get();
+            $user = auth()->user();
+            
+            if (!$user) {
+                \Log::warning('Quiz create attempted without authentication');
+                return redirect()->route('login')->with('error', 'You must be logged in to create quizzes');
+            }
+            
+            $canManage = $user->canManageContent();
+            \Log::info('User can manage content: ' . ($canManage ? 'yes' : 'no'), [
+                'user_id' => $user->id,
+                'user_role' => $user->role
+            ]);
+            
+            if (!$canManage) {
+                \Log::warning('Unauthorized user attempted to access quiz creation', [
+                    'user_id' => $user->id,
+                    'user_role' => $user->role
+                ]);
+                return redirect()->route('dashboard')->with('error', 'You do not have permission to create quizzes');
+            }
+            
+            \Log::info('Rendering quiz create view');
+            return view('quiz.create', compact('materials'));
+            
+        } catch (\Exception $e) {
+            \Log::error('Exception in QuizController@create', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            
+            return view('errors.generic', [
+                'title' => 'Error Creating Quiz',
+                'message' => 'An error occurred while loading the quiz creation page.',
+                'details' => $e->getMessage()
+            ]);
+        }
     }
 
     public function store(Request $request)

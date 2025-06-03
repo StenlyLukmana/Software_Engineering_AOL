@@ -258,8 +258,7 @@ function addQuestion() {
     if (noQuestionsAlert) {
         noQuestionsAlert.style.display = 'none';
     }
-    
-    const questionHtml = `
+      const questionHtml = `
         <div class="question-item mb-4 p-4" id="question-${questionCount}">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <div class="d-flex align-items-center">
@@ -281,9 +280,9 @@ function addQuestion() {
                     <label class="form-label"><i class="fas fa-list me-2"></i>Question Type *</label>
                     <select class="form-select" name="questions[${questionCount}][type]" onchange="updateQuestionOptions(${questionCount})" required>
                         <option value="">Select Type</option>
-                        <option value="multiple_choice">Multiple Choice</option>
-                        <option value="true_false">True/False</option>
-                        <option value="text">Text Answer</option>
+                        <option value="multiple_choice"><i class="fas fa-tasks"></i> Multiple Choice</option>
+                        <option value="true_false"><i class="fas fa-check-circle"></i> True/False</option>
+                        <option value="text"><i class="fas fa-keyboard"></i> Text Answer</option>
                     </select>
                 </div>
                 <div class="col-md-6 mb-3">
@@ -324,8 +323,7 @@ function updateQuestionOptions(questionId) {
     const optionsContainer = document.getElementById(`question-options-${questionId}`);
     
     if (!typeSelect || !optionsContainer) return;
-    
-    if (typeSelect.value === 'multiple_choice') {
+      if (typeSelect.value === 'multiple_choice') {
         optionsContainer.innerHTML = `
             <div class="p-3 bg-light rounded">
                 <label class="form-label"><i class="fas fa-list-ul me-2"></i>Answer Options (one per line)</label>
