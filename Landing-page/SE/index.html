@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <title>NAVBARRR</title>
+</head>
+<body class="index-body">
+    <div class="home-container">
+        
+        <div class="overlay">
+            <header id="navbar">
+                <a href="index.html" class="logo">
+                    <img class="logo-img" src="/assets/B-removebg-preview.png" alt="">
+                </a>
+                <div class="nav">
+                    <a class="login-button">Login</a>
+                    <div class="sign-button-container">
+                        <a href="" class="sign-button">Sign Up</a>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content-wrapper">
+                <div class="background-content">
+                    <h1>Learn Computer Science,</h1>
+                    <h1>One Bit at a Time</h1>
+                    <h3>Whether you're curious, committed, or just starting,</h3>
+                    <h3>Bit by Bit gives you beginner-friendly lessons — no experience needed.</h3>
+                    <div class="start-button-container">
+                        <a href="" class="start-button">Get Started</a>
+                    </div>
+                </div>
+                <img src="assets/home_pixel_art.png" alt="Pixel Art" class="pixel-art-img" />  
+            </div>
+        </div>
+    </div>
+
+    <h1 class="overview-header">Start Small, Learn Big!</h1>
+
+    <div class="overview-container">
+        <div class="card">
+            <div class="card-content">
+                <h1 class="Course">Intro to Computer Science</h1>
+                <h3>Discover what computer science is all about — from how computers work to the big ideas behind software,
+                    hardware, and
+                    problem-solving.</h3>
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="card-content">
+                <h1 class="Course">Algorithm and Programming</h1>
+                <h3>Learn how to write your first code and solve problems step-by-step using basic programming logic and
+                    algorithms.</h3>
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="card-content">
+                <h1 class="Course">Data Structures</h1>
+                <h3>Explore how data is organized — from lists to trees — and why choosing the right structure makes your
+                    code faster and
+                    smarter.</h3>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+
+
+    
+    
+</body>
+<script>
+    window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
+        navbar.classList.toggle("sticky", window.scrollY > 50);
+    });
+</script>
+</html>

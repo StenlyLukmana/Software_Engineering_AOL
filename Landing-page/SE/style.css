@@ -1,0 +1,267 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.index-body {
+    min-height: 100vh;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 20px 100px;
+    z-index: 100000;
+    padding-left: 200px;
+    padding-right: 200px;
+    
+}
+
+header.sticky {
+    padding: 15px 100px;
+    background: #FFFBDE;
+}
+
+header.logo {
+    position: relative;
+}
+
+.nav {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+header div a {
+    position: relative;
+    margin: 0 25px;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 700;
+    transition: 0.5s;
+    font-size: 1.4rem;
+}
+
+header div a:hover {
+    opacity: 0.5;
+}
+
+.logo-img {
+    width: 150px;
+}
+
+.home-container {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #fff9e6, #fef6d3);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.background-content {
+    padding-left: 100px;
+    position: relative;
+    z-index: 1;
+}
+
+.background-content h1 {
+    color: #000000;
+    font-size: 2.6rem;
+    font-family: 'Press Start 2P', monospace;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.background-content h3 {
+    color: #000000;
+    font-size: 1.4rem;
+    font-weight: 450;
+}
+
+.sign-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.sign-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #096B68;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #FFFBDE;
+    font-size: 1.8rem;
+    text-decoration: none;
+    font-weight: 450;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    
+}
+
+.login-button {
+    cursor: pointer;
+    color: #096B68;
+    font-size: 1.8rem;
+    text-decoration: none;
+    font-weight: 1000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+}
+
+.start-button{
+    display: inline-block;
+    padding: 15px 50px;
+    background-color: #096B68;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #FFFBDE;
+    font-size: 1.8rem;
+    text-decoration: none;
+    font-weight: 450;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 3px solid black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: 0.5s;
+}
+
+.start-button-container{
+   padding-top: 20px;
+}
+
+.start-button:hover {
+    opacity: 0.5;
+}
+
+.home-container {
+    padding: 0 100px;
+    
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 80px;
+}
+
+.overview-header{
+    color: #000000;
+    font-size: 2rem;
+    font-family: 'Press Start 2P', monospace;
+    padding: 0px 250px;
+    padding-top: 100px;
+    background-color: #096B68;
+}
+
+.overview-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #096B68;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding-top: 40px;
+}
+
+.card {
+    width: 325px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #FFFBDE;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    outline: 1px solid #000000;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+
+.card-content {
+    padding: 16px;
+}
+
+.card-content h3 {
+    color: #000000;
+    font-weight: 300;
+}
+
+.card-content h1 {
+    color: #000000;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #000000;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.5rem;
+    padding: 10px;
+
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    } }
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .shop-button-container {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .shop-button {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+}
+

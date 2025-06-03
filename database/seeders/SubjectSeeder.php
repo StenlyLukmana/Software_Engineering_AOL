@@ -14,16 +14,22 @@ class SubjectSeeder extends Seeder
     public function run(): void
     {
         Subject::create([
-            'name' => 'Database',
+            'name' => 'Database Systems',
         ]);
         Subject::create([
             'name' => 'Algorithm and Programming',
         ]);
         Subject::create([
-            'name' => 'Statistics',
+            'name' => 'Data Structures',
         ]);
         Subject::create([
-            'name' => 'Computer Security',
+            'name' => 'Computer Networks',
+        ]);
+        Subject::create([
+            'name' => 'Software Engineering',
+        ]);
+        Subject::create([
+            'name' => 'Operating Systems',
         ]);
     }
 }

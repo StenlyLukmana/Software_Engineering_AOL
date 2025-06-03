@@ -20,6 +20,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
+        // Now using the fixed register template
         return view('auth.register');
     }
 
