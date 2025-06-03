@@ -258,7 +258,7 @@
                         <a href="{{ route('register') }}" 
                            class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-blue to-primary-navy text-white font-bold text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 group">
                             <i class="fas fa-rocket mr-3 group-hover:animate-bounce"></i>
-                            Get Started Now
+                            Get Started Now 
                             <i class="fas fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform duration-300"></i>
                         </a>
                     </div>
@@ -305,7 +305,7 @@
             <!-- Subject Cards -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">                <!-- Database Systems -->
                 <div class="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 animate-fadeInUp delay-200">
-                    <div class="text-primary-blue text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div class="text-primary-blue text-4xl mb-4">
                         <i class="fas fa-database"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-primary-navy mb-4">Database Systems</h3>
@@ -320,7 +320,7 @@
                 </div>
                   <!-- Algorithm & Programming -->
                 <div class="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 animate-fadeInUp delay-400">
-                    <div class="text-primary-blue text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div class="text-primary-blue text-4xl mb-4">
                         <i class="fas fa-code"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-primary-navy mb-4">Algorithm & Programming</h3>
@@ -335,7 +335,7 @@
                 </div>
                   <!-- Data Structures -->
                 <div class="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 animate-fadeInUp delay-600">
-                    <div class="text-primary-blue text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div class="text-primary-blue text-4xl mb-4">
                         <i class="fas fa-project-diagram"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-primary-navy mb-4">Data Structures</h3>
@@ -350,7 +350,7 @@
                 </div>
                   <!-- Computer Networks -->
                 <div class="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 animate-fadeInUp delay-200">
-                    <div class="text-primary-blue text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div class="text-primary-blue text-4xl mb-4">
                         <i class="fas fa-network-wired"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-primary-navy mb-4">Computer Networks</h3>
@@ -365,7 +365,7 @@
                 </div>
                   <!-- Software Engineering -->
                 <div class="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 animate-fadeInUp delay-400">
-                    <div class="text-primary-blue text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div class="text-primary-blue text-4xl mb-4">
                         <i class="fas fa-cogs"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-primary-navy mb-4">Software Engineering</h3>
@@ -380,7 +380,7 @@
                 </div>
                   <!-- Operating Systems -->
                 <div class="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 animate-fadeInUp delay-600">
-                    <div class="text-primary-blue text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div class="text-primary-blue text-4xl mb-4">
                         <i class="fas fa-desktop"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-primary-navy mb-4">Operating Systems</h3>
