@@ -143,7 +143,12 @@ Route::get('/quiz-create-direct', function() {
     } catch (Exception $e) {
         return response("Error: " . $e->getMessage(), 500);
     }
-})->name('quiz.create.direct');
+})->middleware(['auth', 'role:admin,lecturer'])->name('quiz.create.direct');
+
+// Direct store route for quiz creation (matches the form action)
+Route::post('/quiz-store-direct', [QuizController::class, 'store'])
+    ->middleware(['auth', 'role:admin,lecturer'])
+    ->name('quiz.store.direct');
 
 // Simple layout test
 Route::get('/simple-layout-test', function () {
