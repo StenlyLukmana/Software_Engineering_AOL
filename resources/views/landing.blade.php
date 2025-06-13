@@ -257,9 +257,9 @@
                     <div class="pt-4">
                         <a href="{{ route('register') }}" 
                            class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-blue to-primary-navy text-white font-bold text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 group">
-                            <i class="fas fa-rocket mr-3 group-hover:animate-bounce"></i>
+                            <i class="fas fa-rocket mr-3"></i>
                             Get Started Now 
-                            <i class="fas fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform duration-300"></i>
+                            <i class="fas fa-arrow-right ml-3"></i>
                         </a>
                     </div>
                     
@@ -315,7 +315,7 @@
                     </p>
                     <a href="{{ route('course.detail', 'database-systems') }}" class="mt-6 inline-flex items-center px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-primary-navy transition-colors duration-300 no-underline">
                         <span>Explore Course</span>
-                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
+                        <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
                   <!-- Algorithm & Programming -->
@@ -330,7 +330,7 @@
                     </p>
                     <a href="{{ route('course.detail', 'algorithm-programming') }}" class="mt-6 inline-flex items-center px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-primary-navy transition-colors duration-300 no-underline">
                         <span>Explore Course</span>
-                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
+                        <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
                   <!-- Data Structures -->
@@ -345,7 +345,7 @@
                     </p>
                     <a href="{{ route('course.detail', 'data-structures') }}" class="mt-6 inline-flex items-center px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-primary-navy transition-colors duration-300 no-underline">
                         <span>Explore Course</span>
-                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
+                        <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
                   <!-- Computer Networks -->
@@ -360,7 +360,7 @@
                     </p>
                     <a href="{{ route('course.detail', 'computer-networks') }}" class="mt-6 inline-flex items-center px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-primary-navy transition-colors duration-300 no-underline">
                         <span>Explore Course</span>
-                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
+                        <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
                   <!-- Software Engineering -->
@@ -375,7 +375,7 @@
                     </p>
                     <a href="{{ route('course.detail', 'software-engineering') }}" class="mt-6 inline-flex items-center px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-primary-navy transition-colors duration-300 no-underline">
                         <span>Explore Course</span>
-                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
+                        <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
                   <!-- Operating Systems -->
@@ -390,7 +390,7 @@
                     </p>
                     <a href="{{ route('course.detail', 'operating-systems') }}" class="mt-6 inline-flex items-center px-4 py-2 bg-primary-blue text-white rounded-lg hover:bg-primary-navy transition-colors duration-300 no-underline">
                         <span>Explore Course</span>
-                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform duration-300"></i>
+                        <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
             </div>
@@ -527,6 +527,7 @@
         document.querySelectorAll('.animate-fadeInUp, .animate-fadeInLeft, .animate-fadeInRight').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
-            observer.observe(el);    </script>
+            observer.observe(el);    
+    </script>
 </body>
 </html>
